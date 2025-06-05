@@ -5,7 +5,7 @@ ARG VERSION
 
 RUN apt update \
     && apt upgrade -y \
-    && apt install -y curl python
+    && apt install -y curl
 
 WORKDIR /opt
 
