@@ -9,9 +9,12 @@ RUN apt update \
 
 WORKDIR /opt
 # test
+ENV VERSION=${VERSION}
+ENV TARGETARCH=${TARGETARCH}
+
 RUN echo "VERSION=$VERSION, TARGETARCH=$TARGETARCH"
+
 RUN curl -L -o /opt/natmap "https://github.com/heiher/natmap/releases/download/${VERSION}/natmap-linux-${TARGETARCH}" \
     && chmod +x /opt/natmap
-RUN chmod +x /opt/natmap
 
 ENTRYPOINT ["/opt/natmap"]
