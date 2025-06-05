@@ -23,6 +23,9 @@ jobs:
       id: vars
       run: |
         echo "version=${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
+        # test
+        echo "${GITHUB_REF##*/}"
+        echo $GITHUB_OUTPUT
 
     - uses: docker/build-push-action@v5
       with:
@@ -33,5 +36,5 @@ jobs:
             VERSION=${{ steps.vars.outputs.version }}
         push: true
         tags: |
-            ${{ env.IMAGE_NAMESPACE }}/natmap:${{ steps.vars.outputs.version }}-${{ matrix.arch }}
-            ${{ env.IMAGE_NAMESPACE }}/natmap:latest-${{ matrix.arch }}
+          ${{ env.IMAGE_NAMESPACE }}/natmap:${{ steps.vars.outputs.version }}
+          ${{ env.IMAGE_NAMESPACE }}/natmap:latest
