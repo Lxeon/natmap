@@ -1,8 +1,10 @@
 name: Build Docker images and push
 
 on:
-  release:
-    types: [published]
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
