@@ -44,7 +44,7 @@ jobs:
         platforms: linux/${{ matrix.arch }}
         build-args: |
           VERSION=${{ steps.vars.outputs.version }}
-          ARCH=${{ matrix.arch }}
+          ARCH=${{ matrix.docker_arch }}
         tags: |
           ${{ env.IMAGE_NAMESPACE }}/natmap:${{ steps.vars.outputs.version }}-${{ matrix.arch }}
           ${{ env.IMAGE_NAMESPACE }}/natmap:latest-${{ matrix.arch }}
