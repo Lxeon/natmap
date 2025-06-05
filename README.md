@@ -145,7 +145,30 @@ Add a port forward rule:
 * Internal port: 80
 * Others: keep default values
 
-#### Docker
+### Script arguments
+
+```
+{public-addr} {public-port} {ip4p} {private-port} {protocol} {private-addr}
+```
+
+* argv[0]: Script path
+* argv[1]: Public address (IPv4/IPv6)
+* argv[2]: Public port
+* argv[3]: IP4P
+* argv[4]: Bind port (private port)
+* argv[5]: Protocol (TCP/UDP)
+* argv[6]: Private address (IPv4/IPv6)
+
+### IP4P address
+
+The IP4P address format uses IPv6 special addresses to encode IPv4 addresses and
+ports for easy distribution through DNS AAAA records.
+
+```
+2001::{port}:{ipv4-hi16}:{ipv4-lo16}
+```
+
+### Docker
 
 * Support **amd64** and **arm64**.
 * image tags: latest-amd64, latest-arm64 or [release tags]-amd64 like 20250512-amd64
@@ -168,29 +191,6 @@ services:
       - TZ=Asia/Shanghai
     network_mode: host
     restart: always
-```
-
-### Script arguments
-
-```
-{public-addr} {public-port} {ip4p} {private-port} {protocol} {private-addr}
-```
-
-* argv[0]: Script path
-* argv[1]: Public address (IPv4/IPv6)
-* argv[2]: Public port
-* argv[3]: IP4P
-* argv[4]: Bind port (private port)
-* argv[5]: Protocol (TCP/UDP)
-* argv[6]: Private address (IPv4/IPv6)
-
-### IP4P address
-
-The IP4P address format uses IPv6 special addresses to encode IPv4 addresses and
-ports for easy distribution through DNS AAAA records.
-
-```
-2001::{port}:{ipv4-hi16}:{ipv4-lo16}
 ```
 
 ## Contributors
