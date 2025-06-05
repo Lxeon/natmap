@@ -148,6 +148,7 @@ Add a port forward rule:
 #### Docker
 
 * Support **amd64** and **arm64**.
+* image tags: latest-amd64, latest-arm64 or [release tags]-amd64 like 20250512-amd64
 * Change command to what you want.
 * volumes script path, and make sure have permission to run.
 
@@ -155,7 +156,7 @@ docker-compose.yml
 ```docker-compse
 services:
   natmap:
-    container_name: natmap-wg
+    container_name: natmap
     image: heiher/natmap:latest-amd64
     command: -u -s stun.qq.com -b 30101 -t 127.0.0.1 -p 51820 -e /opt/cf_ip4p.sh -k 60
     volumes:
