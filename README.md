@@ -145,6 +145,30 @@ Add a port forward rule:
 * Internal port: 80
 * Others: keep default values
 
+#### Docker
+
+* Support **amd64** and **arm64**.
+* Change command to what you want.
+* volumes script path, and make sure have permission to run.
+
+docker-compose.yml
+```docker-compse
+services:
+  natmap:
+    container_name: natmap-wg
+    image: heiher/natmap:latest-amd64
+    command: -u -s stun.qq.com -b 30101 -t 127.0.0.1 -p 51820 -e /opt/cf_ip4p.sh -k 60
+    volumes:
+      - ./natmap/cf_ip4p.sh:/opt/cf_ip4p.sh
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    network_mode: host
+    restart: always
+```
+
 ### Script arguments
 
 ```
