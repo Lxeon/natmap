@@ -1,5 +1,5 @@
 ARG VERSION
-ARG TARGETARCH
+ARG ARCH
 
 FROM ubuntu:latest
 
@@ -9,6 +9,8 @@ RUN apt update \
 
 WORKDIR /opt
 
-ADD https://github.com/heiher/natmap/releases/download/${VERSION}/natmap-linux-${TARGETARCH} /opt/natmap
+
+ADD https://github.com/heiher/natmap/releases/download/${VERSION}/natmap-linux-${ARCH} /opt/natmap
+RUN chmod +x /opt/natmap
 
 ENTRYPOINT ["/opt/natmap"]
