@@ -388,6 +388,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=nightly,enable={{is_default_branch}}
+            type=ref,event=tag
       - name: Create Manifest List and Push
         working-directory: /tmp/digests
         run: |
