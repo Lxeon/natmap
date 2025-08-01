@@ -8,7 +8,7 @@ RUN apt update \
     && apt install -y curl
 
 WORKDIR /opt
-COPY ./tmp/artifact/natmap-linux-${NATMAP_ARCH} /opt/natmap
+COPY ./tmp/artifact/natmap-linux-${NATMAP_ARCH}/natmap-linux-${NATMAP_ARCH} /opt/natmap
 RUN chmod +x /opt/natmap
 
 ENTRYPOINT ["/opt/natmap"]
